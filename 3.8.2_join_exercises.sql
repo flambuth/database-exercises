@@ -40,3 +40,60 @@ SELECT departments.`dept_name`, dept_manager.`emp_no`
 FROM departments
 INNER JOIN `dept_manager` ON departments.`dept_no` = `dept_manager`.`dept_no`
 GROUP BY departments.dept_no, dept_manager.`emp_no`;
+
+
+-- One step at a time. Lets join employees TABLE, dept_emp TABLE, and dept_manager Table
+-- EVERY FIELD is selected across joining these 3 tables.
+SELECT *
+FROM employees as e
+INNER JOIN dept_emp as de 
+	ON e.emp_no = de.emp_no
+INNER JOIN dept_manager as dm
+	ON dm.dept_no = de.dept_no 
+;
+
+-- query that shows each department along with the name of the current manager for that department
+-- Maybe another inner join
+SELECT DISTINCT d.dept_name, dm.emp_no, e.last_name
+FROM employees as e
+INNER JOIN dept_emp as de 
+	ON e.emp_no = de.emp_no
+INNER JOIN dept_manager as dm
+	ON dm.dept_no = de.dept_no 
+INNER JOIN departments as d
+	ON d.dept_no = dm.dept_no
+WHERE dm.to_date = '9999-01-01'	AND de.to_date = '9999-01-01'
+;
+
+-- Maybe another inner join
+SELECT dm.to_date
+FROM employees as e
+INNER JOIN dept_emp as de 
+	ON e.emp_no = de.emp_no
+INNER JOIN dept_manager as dm
+	ON dm.dept_no = de.dept_no 
+INNER JOIN departments as d
+	ON d.dept_no = dm.dept_no
+WHERE dm.to_date = '9999-01-01'	AND de.to_date = '9999-01-01'
+;
+
+
+-- I lost myself. Lets try modifying the given query
+SELECT CONCAT(e.first_name, ' ', e.last_name) AS full_name, d.dept_name
+FROM employees AS e
+JOIN dept_emp AS de
+  ON de.emp_no = e.emp_no
+JOIN departments AS d
+  ON d.dept_no = de.dept_no
+WHERE de.to_date = '9999-01-01'
+;	
+
+-- Who are these damn managers?
+SELECT CONCAT(e.first_name, e.last_name) AS full_name, dm.to_date, d.dept_no
+FROM employees AS e 
+INNER JOIN dept_manager AS dm
+	ON e.emp_no = dm.emp_no
+INNER JOIN departments AS d
+	ON d.dept_no = dm.dept_no
+WHERE dm.to_date = '9999-01-01'
+;
