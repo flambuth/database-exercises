@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>ContentFilters</key>
+	<dict/>
+	<key>auto_connect</key>
+	<true/>
+	<key>data</key>
+	<dict>
+		<key>connection</key>
+		<dict>
+			<key>database</key>
+			<string>employees</string>
+			<key>host</key>
+			<string>157.230.209.171</string>
+			<key>kcid</key>
+			<string>-4901112283943864687</string>
+			<key>name</key>
+			<string>Data_Science_Databases</string>
+			<key>rdbms_type</key>
+			<string>mysql</string>
+			<key>sslCACertFileLocation</key>
+			<string></string>
+			<key>sslCACertFileLocationEnabled</key>
+			<integer>0</integer>
+			<key>sslCertificateFileLocation</key>
+			<string></string>
+			<key>sslCertificateFileLocationEnabled</key>
+			<integer>0</integer>
+			<key>sslKeyFileLocation</key>
+			<string></string>
+			<key>sslKeyFileLocationEnabled</key>
+			<integer>0</integer>
+			<key>type</key>
+			<string>SPTCPIPConnection</string>
+			<key>useSSL</key>
+			<integer>0</integer>
+			<key>user</key>
+			<string>bayes_809</string>
+		</dict>
+		<key>session</key>
+		<dict>
+			<key>connectionEncoding</key>
+			<string>utf8</string>
+			<key>contentPageNumber</key>
+			<integer>1</integer>
+			<key>contentSelection</key>
+			<data>
+			YnBsaXN0MDDUAQIDBAUGJSZYJHZlcnNpb25YJG9iamVjdHNZJGFy
+			Y2hpdmVyVCR0b3ASAAGGoKgHCBMUFRYaIVUkbnVsbNMJCgsMDxJX
+			TlMua2V5c1pOUy5vYmplY3RzViRjbGFzc6INDoACgAOiEBGABIAF
+			gAdUdHlwZVRyb3dzXxAdU2VsZWN0aW9uRGV0YWlsVHlwZU5TSW5k
+			ZXhTZXTSFwsYGVxOU1JhbmdlQ291bnQQAIAG0hscHR5aJGNsYXNz
+			bmFtZVgkY2xhc3Nlc1pOU0luZGV4U2V0oh8gWk5TSW5kZXhTZXRY
+			TlNPYmplY3TSGxwiI1xOU0RpY3Rpb25hcnmiIiRYTlNPYmplY3Rf
+			EA9OU0tleWVkQXJjaGl2ZXLRJyhUZGF0YYABAAgAEQAaACMALQAy
+			ADcAQABGAE0AVQBgAGcAagBsAG4AcQBzAHUAdwB8AIEAoQCmALMA
+			tQC3ALwAxwDQANsA3gDpAPIA9wEEAQcBEAEiASUBKgAAAAAAAAIB
+			AAAAAAAAACkAAAAAAAAAAAAAAAAAAAEs
+			</data>
+			<key>contentSortColIsAsc</key>
+			<true/>
+			<key>contentViewport</key>
+			<string>{{0, 0}, {672, 541}}</string>
+			<key>isToolbarVisible</key>
+			<true/>
+			<key>queries</key>
+			<string>-- woops forgot one
+
+
+-- start from here
+SELECT first_name, last_name
+FROM employees
+ORDER BY first_name ASC; 
+
+-- sortin firt and last name
+SELECT first_name, last_name
+FROM employees
+ORDER BY first_name ASC, last_name DESC;
+
+-- sortin firt and last name. Last name now has primacy of sorting. 
+SELECT first_name, last_name
+FROM employees
+ORDER BY last_name DESC, first_name ASC;
+WHERE last_name REGEXP ''
+
+-- how do you REGEXP to accept any string that contains one string char?</string>
+			<key>view</key>
+			<string>SP_VIEW_CUSTOMQUERY</string>
+			<key>windowVerticalDividerPosition</key>
+			<real>220</real>
+		</dict>
+	</dict>
+	<key>encrypted</key>
+	<false/>
+	<key>format</key>
+	<string>connection</string>
+	<key>queryFavorites</key>
+	<array/>
+	<key>queryHistory</key>
+	<array>
+		<string>-- sortin firt and last name
+SELECT first_name, last_name
+FROM employees
+ORDER BY last_name DESC, first_name ASC</string>
+		<string>-- sortin firt and last name
+SELECT first_name, last_name
+FROM employees
+ORDER BY first_name ASC, last_name DESC</string>
+		<string>last_name DESC</string>
+		<string>last_name ASC</string>
+		<string>-- woops forgot one
+
+
+-- start from here
+SELECT first_name, last_name
+FROM employees
+ORDER BY first_name ASC</string>
+		<string>-- woops forgot one
+
+SELECT first_name, last_name
+FROM employees
+ORDER BY last_name DESC, first_name ASC</string>
+		<string>-- Lets see if I can WHERE-filter out based on some fields in the film table
+SELECT actor.first_name, actor.last_name, film.title, film.release_year
+FROM actor
+INNER JOIN film_actor ON actor.actor_id = film_actor.actor_id
+INNER JOIN film ON film_actor.film_id = film.film_id
+WHERE film.title REGEXP 'dinosaur$'</string>
+		<string>-- Lets see if I can WHERE-filter out based on some fields in the film table
+SELECT actor.first_name, actor.last_name, film.title, film.release_year
+FROM actor
+INNER JOIN film_actor ON actor.actor_id = film_actor.actor_id
+INNER JOIN film ON film_actor.film_id = film.film_id
+WHERE film.`rental_duration` &gt; 3</string>
+		<string>-- Lets see if I can WHERE-filter out based on some fields in the film table
+SELECT actor.first_name, actor.last_name, film.title, film.release_year
+FROM actor
+INNER JOIN film_actor ON actor.actor_id = film_actor.actor_id
+INNER JOIN film ON film_actor.film_id = film.film_id
+WHERE film.`release_year` &lt; 2000</string>
+		<string>-- Lets see if I can WHERE-filter out based on some fields in the film table
+SELECT actor.first_name, actor.last_name, film.title
+FROM actor
+INNER JOIN film_actor ON actor.actor_id = film_actor.actor_id
+INNER JOIN film ON film_actor.film_id = film.film_id
+WHERE film.`release_year` &lt; 2000</string>
+		<string>-- lets try some joins
+SELECT actor.first_name, actor.last_name, film.title
+FROM actor
+INNER JOIN film_actor ON actor.actor_id = film_actor.actor_id
+INNER JOIN film ON film_actor.film_id = film.film_id</string>
+		<string>-- lets try some joins
+SELECT *
+FROM actor
+INNER JOIN film_actor ON actor.actor_id = film_actor.actor_id
+INNER JOIN film ON film_actor.film_id = film.film_id</string>
+		<string>-- lets try some joins
+SELECT *
+FROM actor
+INNER JOIN film_actor ON actor.actor_id = film_actor.actor_id
+INNER JOIN film ON filmactor.film_id = film.film_id</string>
+		<string>-- lets try some joins
+SELECT *
+FROM actor
+INNER JOIN film_actor
+ON actor.actor_id = film_actor.actor_id</string>
+		<string>-- lets try some joins
+SELECT DISTINCT *
+FROM actor
+INNER JOIN film_actor
+ON actor.actor_id = film_actor.actor_id</string>
+		<string>-- lets try some joins
+SELECT *
+FROM actor
+GROUP BY actor.actor_id
+INNER JOIN film_actor
+ON actor.actor_id = film_actor.actor_id</string>
+		<string>-- lets try some joins
+SELECT *
+FROM actor
+INNER JOIN film_actor
+ON actor.actor_id = film_actor.actor_id
+GROUP BY actor.actor_id</string>
+		<string>SELECT *
+FROM actor
+WHERE `last_name` REGEXP 'son$'</string>
+		<string>SELECT *
+FROM actor
+WHERE `last_name` REGEXP 'age$'</string>
+		<string>SELECT *
+FROM actor
+WHERE `last_name` REGEXP age$</string>
+	</array>
+	<key>rdbms_type</key>
+	<string>mysql</string>
+	<key>rdbms_version</key>
+	<string>5.7.27-0ubuntu0.18.04.1-log</string>
+	<key>version</key>
+	<integer>1</integer>
+</dict>
+</plist>
