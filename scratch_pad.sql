@@ -27,3 +27,8 @@ SELECT release_date,CONCAT(name,' by ',artist) AS record
 FROM albums
 WHERE sales>20 AND release_date<2000
 ;
+
+-- making an alias for the albums table. You don't even need the AS. You can just append 'a' after albums
+SELECT * FROM albums AS a
+WHERE a.sales > 20
+;
