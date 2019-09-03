@@ -66,26 +66,18 @@
 			<key>isToolbarVisible</key>
 			<true/>
 			<key>queries</key>
-			<string>-- woops forgot one
+			<string>-- it begins
+SELECT DISTINCT title FROM titles
+limit 10
+;
 
-
--- start from here
-SELECT first_name, last_name
+-- First ten names starting with Z
+SELECT first_name
 FROM employees
-ORDER BY first_name ASC; 
+WHERE first_name LIKE 'Z%'
+LIMIT 10;
 
--- sortin firt and last name
-SELECT first_name, last_name
-FROM employees
-ORDER BY first_name ASC, last_name DESC;
-
--- sortin firt and last name. Last name now has primacy of sorting. 
-SELECT first_name, last_name
-FROM employees
-ORDER BY last_name DESC, first_name ASC;
-WHERE last_name REGEXP ''
-
--- how do you REGEXP to accept any string that contains one string char?</string>
+</string>
 			<key>view</key>
 			<string>SP_VIEW_CUSTOMQUERY</string>
 			<key>windowVerticalDividerPosition</key>
@@ -100,98 +92,94 @@ WHERE last_name REGEXP ''
 	<array/>
 	<key>queryHistory</key>
 	<array>
-		<string>-- sortin firt and last name
+		<string>SELECT first_name
+FROM employees
+WHERE first_name LIKE 'Z%'
+LIMIT 10</string>
+		<string>SELECT emp_no, first_name, last_name
+FROM employees
+WHERE first_name LIKE 'Z%'
+LIMIT 10</string>
+		<string>SELECT emp_no, first_name, last_name
+FROM employees
+WHERE first_name LIKE 'M%'
+LIMIT 10</string>
+		<string>-- it begins
+SELECT DISTINCT title FROM titles
+limit 10</string>
+		<string>-- it begins
+SELECT DISTINCT title FROM titles</string>
+		<string>-- reference to the employees hired in the 90s and born on christmas.
+-- i can do it without the christmas 12-25-XXXX stipulation
+SELECT `first_name`,`last_name`,TIMEDIFF(hire_date, CURRENT_DATE)
+From `employees`
+WHERE `hire_date` &gt;= '1990-01-01' AND `hire_date` &lt;= '2000-01-01'
+ORDER BY `birth_date` ASC, `hire_date` DESC</string>
+		<string>-- reference to the employees hired in the 90s and born on christmas.
+-- i can do it without the christmas 12-25-XXXX stipulation
+SELECT `first_name`,`last_name`,TIMEDIFF(hire_date, CURRENT_DATE)
+From `employees`
+WHERE `hire_date` &gt;= '1990-01-01' AND `hire_date` &lt;= '2000-01-01'</string>
+		<string>-- Sortin by emp_no, even though its not selected. using one hell of a regex pattern to filter out lastnames that have an e
+SELECT first_name, last_name
+FROM employees
+WHERE employees.last_name REGEXP '[a-zA-Z]*e[a-zA-Z]*'
+ORDER BY emp_no DESC</string>
+		<string>-- sortin firt and last name. Last name now has primacy of sorting. 
+SELECT first_name, last_name
+FROM employees
+WHERE employees.last_name REGEXP '[a-zA-Z]*e[a-zA-Z]*'
+ORDER BY emp_no</string>
+		<string>-- sortin firt and last name. Last name is now the first sorting method.
 SELECT first_name, last_name
 FROM employees
 ORDER BY last_name DESC, first_name ASC</string>
-		<string>-- sortin firt and last name
+		<string>-- sortin firt and last name. Last name now has primacy of sorting. 
 SELECT first_name, last_name
 FROM employees
-ORDER BY first_name ASC, last_name DESC</string>
-		<string>last_name DESC</string>
-		<string>last_name ASC</string>
-		<string>-- woops forgot one
-
-
--- start from here
+WHERE employees.last_name REGEXP '[a-zA-Z]*y[a-zA-Z]*'
+ORDER BY emp_no</string>
+		<string>-- sortin firt and last name. Last name now has primacy of sorting. 
 SELECT first_name, last_name
 FROM employees
-ORDER BY first_name ASC</string>
-		<string>-- woops forgot one
-
+WHERE employees.last_name = 'Peac'
+ORDER BY emp_no</string>
+		<string>-- sortin firt and last name. Last name now has primacy of sorting. 
 SELECT first_name, last_name
 FROM employees
-ORDER BY last_name DESC, first_name ASC</string>
-		<string>-- Lets see if I can WHERE-filter out based on some fields in the film table
-SELECT actor.first_name, actor.last_name, film.title, film.release_year
-FROM actor
-INNER JOIN film_actor ON actor.actor_id = film_actor.actor_id
-INNER JOIN film ON film_actor.film_id = film.film_id
-WHERE film.title REGEXP 'dinosaur$'</string>
-		<string>-- Lets see if I can WHERE-filter out based on some fields in the film table
-SELECT actor.first_name, actor.last_name, film.title, film.release_year
-FROM actor
-INNER JOIN film_actor ON actor.actor_id = film_actor.actor_id
-INNER JOIN film ON film_actor.film_id = film.film_id
-WHERE film.`rental_duration` &gt; 3</string>
-		<string>-- Lets see if I can WHERE-filter out based on some fields in the film table
-SELECT actor.first_name, actor.last_name, film.title, film.release_year
-FROM actor
-INNER JOIN film_actor ON actor.actor_id = film_actor.actor_id
-INNER JOIN film ON film_actor.film_id = film.film_id
-WHERE film.`release_year` &lt; 2000</string>
-		<string>-- Lets see if I can WHERE-filter out based on some fields in the film table
-SELECT actor.first_name, actor.last_name, film.title
-FROM actor
-INNER JOIN film_actor ON actor.actor_id = film_actor.actor_id
-INNER JOIN film ON film_actor.film_id = film.film_id
-WHERE film.`release_year` &lt; 2000</string>
-		<string>-- lets try some joins
-SELECT actor.first_name, actor.last_name, film.title
-FROM actor
-INNER JOIN film_actor ON actor.actor_id = film_actor.actor_id
-INNER JOIN film ON film_actor.film_id = film.film_id</string>
-		<string>-- lets try some joins
-SELECT *
-FROM actor
-INNER JOIN film_actor ON actor.actor_id = film_actor.actor_id
-INNER JOIN film ON film_actor.film_id = film.film_id</string>
-		<string>-- lets try some joins
-SELECT *
-FROM actor
-INNER JOIN film_actor ON actor.actor_id = film_actor.actor_id
-INNER JOIN film ON filmactor.film_id = film.film_id</string>
-		<string>-- lets try some joins
-SELECT *
-FROM actor
-INNER JOIN film_actor
-ON actor.actor_id = film_actor.actor_id</string>
-		<string>-- lets try some joins
-SELECT DISTINCT *
-FROM actor
-INNER JOIN film_actor
-ON actor.actor_id = film_actor.actor_id</string>
-		<string>-- lets try some joins
-SELECT *
-FROM actor
-GROUP BY actor.actor_id
-INNER JOIN film_actor
-ON actor.actor_id = film_actor.actor_id</string>
-		<string>-- lets try some joins
-SELECT *
-FROM actor
-INNER JOIN film_actor
-ON actor.actor_id = film_actor.actor_id
-GROUP BY actor.actor_id</string>
-		<string>SELECT *
-FROM actor
-WHERE `last_name` REGEXP 'son$'</string>
-		<string>SELECT *
-FROM actor
-WHERE `last_name` REGEXP 'age$'</string>
-		<string>SELECT *
-FROM actor
-WHERE `last_name` REGEXP age$</string>
+ORDER BY emp_no
+WHERE employees.last_name = 'Peac'</string>
+		<string>-- sortin firt and last name. Last name now has primacy of sorting. 
+SELECT first_name, last_name
+FROM employees
+ORDER BY emp_no
+WHERE employees.last_name REGEXP ".+e$"</string>
+		<string>-- sortin firt and last name. Last name now has primacy of sorting. 
+SELECT first_name, last_name
+FROM employees
+ORDER BY emp_no
+WHERE last_name REGEXP ".+e$"</string>
+		<string>-- sortin firt and last name. Last name now has primacy of sorting. 
+SELECT first_name, last_name
+FROM employees
+ORDER BY emp_no
+WHERE last_name REGEXP ".+e.+"</string>
+		<string>-- sortin firt and last name. Last name now has primacy of sorting. 
+SELECT first_name, last_name
+FROM employees
+ORDER BY emp_no
+WHERE last_name REGEXP '.+e.+'</string>
+		<string>-- sortin firt and last name. Last name now has primacy of sorting. 
+SELECT first_name, last_name
+FROM employees
+ORDER BY emp_no
+WHERE last_name REGEXP '.?e.?'</string>
+		<string>-- sortin firt and last name. Last name now has primacy of sorting. 
+SELECT first_name, last_name
+FROM employees
+ORDER BY emp_no
+WHERE last_name REGEXP '[a-zA-Z]*e[a-zA-Z]*'</string>
+		<string>WHERE last_name REGEXP '[a-zA-Z]*e[a-zA-Z]*'</string>
 	</array>
 	<key>rdbms_type</key>
 	<string>mysql</string>
