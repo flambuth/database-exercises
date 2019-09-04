@@ -25,3 +25,4 @@ GROUP BY co.region
 ;
 
 -- Next one will be pushed to git with a bash script
+-- With the right escape character. 
