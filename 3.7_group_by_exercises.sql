@@ -13,7 +13,7 @@ FROM `employees`
 GROUP BY `last_name`, `first_name`
 HAVING last_name REGEXP '^E.+e$'; 
 
-#Last names with q but no u after 
+#Last names with q but no u after. Like would have been much more elegant.
 SELECT DISTINCT last_name
 FROM `employees`
 WHERE last_name REGEXP 'q[^u].+';

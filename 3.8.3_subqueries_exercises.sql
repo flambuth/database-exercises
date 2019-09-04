@@ -59,8 +59,21 @@ WHERE emp_no IN (
 
 -- How many current salaries are within 1 standard deviation of the highest salary?
 -- What percentage of all salaries is this?
-SELECT STDEV(salary)
+-- Putting it together into one query will be dificult. cest la vie
+
+-- Getting the standard deviation and mean.
+SELECT STD(salary), AVG(salary)
 FROM salaries
 ;
--- This gave me this error = execute command denied to user 'bayes_809'@'%' for routine 'employees.STDEV'
 
+-- The amount of current employees within one standard deviation
+SELECT count(*) AS salaryWithin1stdDev
+FROM salaries
+WHERE salary < 80716 AND salary > 46905.92 AND to_date = '9999-01-01'
+;
+
+-- The total amount of current employees.
+SELECT count(*)
+FROM salaries
+WHERE to_date = '9999-01-01'
+;
