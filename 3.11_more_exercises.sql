@@ -18,3 +18,9 @@ FROM country AS c
 GROUP BY c.region
 ;
 
+-- What is the population for each region?
+SELECT co.region, SUM(co.population)
+FROM country AS co
+GROUP BY co.region
+;
+
