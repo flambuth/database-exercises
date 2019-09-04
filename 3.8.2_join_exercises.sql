@@ -88,7 +88,7 @@ JOIN departments AS d
 WHERE de.to_date = '9999-01-01'
 ;	
 
--- Who are these damn managers?
+-- Who are these managers?
 SELECT CONCAT(e.first_name, e.last_name) AS full_name, dm.to_date, d.dept_no
 FROM employees AS e 
 INNER JOIN dept_manager AS dm
@@ -96,4 +96,14 @@ INNER JOIN dept_manager AS dm
 INNER JOIN departments AS d
 	ON d.dept_no = dm.dept_no
 WHERE dm.to_date = '9999-01-01'
+;
+
+-- Now just the ladies
+SELECT CONCAT(e.first_name,' ', e.last_name) AS full_name, d.dept_name
+FROM employees AS e 
+INNER JOIN dept_manager AS dm
+	ON e.emp_no = dm.emp_no
+INNER JOIN departments AS d
+	ON d.dept_no = dm.dept_no
+WHERE dm.to_date = '9999-01-01' AND e.gender = 'F'
 ;
