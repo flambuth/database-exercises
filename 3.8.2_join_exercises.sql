@@ -85,11 +85,12 @@ JOIN dept_emp AS de
   ON de.emp_no = e.emp_no
 JOIN departments AS d
   ON d.dept_no = de.dept_no
+-- Think this might be the problem
 WHERE de.to_date = '9999-01-01'
 ;	
 
 -- Who are these managers?
-SELECT CONCAT(e.first_name, e.last_name) AS full_name, dm.to_date, d.dept_no
+SELECT CONCAT(e.first_name,' ', e.last_name) AS full_name, d.dept_name
 FROM employees AS e 
 INNER JOIN dept_manager AS dm
 	ON e.emp_no = dm.emp_no
@@ -117,3 +118,14 @@ WHERE de.dept_no = 'd009'
 GROUP BY title
 ;
 
+-- What are these managers being paid?
+SELECT CONCAT(e.first_name,' ', e.last_name) AS full_name, d.dept_name, s.salary AS currentSalary
+FROM employees AS e 
+INNER JOIN dept_manager AS dm
+	ON e.emp_no = dm.emp_no
+INNER JOIN departments AS d
+	ON d.dept_no = dm.dept_no
+INNER JOIN salaries AS s
+	ON dm.emp_no = s.emp_no	
+WHERE dm.to_date = '9999-01-01' AND s.to_date = '9999-01-01'
+;
