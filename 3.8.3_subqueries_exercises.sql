@@ -56,3 +56,11 @@ WHERE emp_no IN (
 	WHERE salary > 63810.7448 AND to_date = '9999-01-01'
 )
 ;
+
+-- How many current salaries are within 1 standard deviation of the highest salary?
+-- What percentage of all salaries is this?
+SELECT STDEV(salary)
+FROM salaries
+;
+-- This gave me this error = execute command denied to user 'bayes_809'@'%' for routine 'employees.STDEV'
+
