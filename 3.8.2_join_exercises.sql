@@ -168,3 +168,17 @@ ORDER BY s.salary DESC
 LIMIT 1
 ;
 
+-- Who is the highest paid manager?
+SELECT CONCAT(e.first_name,' ', e.last_name) AS full_name, d.dept_name, s.salary AS currentSalary
+FROM employees AS e 
+INNER JOIN dept_manager AS dm
+	ON e.emp_no = dm.emp_no
+INNER JOIN departments AS d
+	ON d.dept_no = dm.dept_no
+INNER JOIN salaries AS s
+	ON dm.emp_no = s.emp_no	
+WHERE dm.to_date = '9999-01-01' AND s.to_date = '9999-01-01'
+LIMIT 1
+;
+
+-- BONUS FIND highest paid employee in all the data. 
