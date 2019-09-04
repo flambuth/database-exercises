@@ -107,3 +107,13 @@ INNER JOIN departments AS d
 	ON d.dept_no = dm.dept_no
 WHERE dm.to_date = '9999-01-01' AND e.gender = 'F'
 ;
+
+-- Current titles for people who work at Customer service
+SELECT t.title AS CustomerServiceRoles, count(t.title) AS Total
+FROM titles AS t
+INNER JOIN dept_emp AS de
+	ON t.emp_no = de.emp_no
+WHERE de.dept_no = 'd009'
+GROUP BY title
+;
+
