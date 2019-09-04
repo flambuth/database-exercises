@@ -129,3 +129,42 @@ INNER JOIN salaries AS s
 	ON dm.emp_no = s.emp_no	
 WHERE dm.to_date = '9999-01-01' AND s.to_date = '9999-01-01'
 ;
+
+-- Getint the amount of employees in each department
+SELECT d.dept_no, d.dept_name, count(de.emp_no)
+FROM departments AS d
+INNER JOIN dept_emp AS de
+	ON de.dept_no = d.dept_no
+WHERE de.to_date = '9999-01-01'
+GROUP BY d.dept_name
+;
+
+-- average salary of all entries in the salaries field. 
+-- I bet there is a more efficient way. This one chugs. Is it becasuse the average function? Is it unavoidable.
+SELECT d.dept_name, AVG(s.salary) AS averageSalary
+FROM salaries AS s
+INNER JOIN employees AS e
+	ON s.emp_no = e.emp_no
+INNER JOIN dept_emp AS de
+	ON s.emp_no = de.emp_no
+INNER JOIN departments AS d
+	ON d.dept_no = de.dept_no
+GROUP BY de.dept_no
+ORDER BY averageSalary DESC
+LIMIT 1
+;
+
+-- It feels computationaly cheap, but I just limited the query instead of some sort of CLAUSE to filter. Or was this the efficient way?
+SELECT e.first_name, e.last_name, s.salary
+FROM employees AS e
+INNER JOIN dept_emp AS de
+	ON e.emp_no = de.emp_no
+INNER JOIN departments AS d
+	ON d.dept_no = de.dept_no
+INNER JOIN salaries AS s
+	ON s.emp_no = e.emp_no
+WHERE d.dept_name = 'Marketing'
+ORDER BY s.salary DESC
+LIMIT 1
+;
+
