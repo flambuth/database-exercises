@@ -4,8 +4,17 @@
 -- Is there any department where the department manager gets paid less than the average salary?
 
 -- What languages are spoken in Santa Monica?
-SELECT ci.name, co.name
+SELECT cl.Language, cl.Percentage
 FROM city as ci
-INNER JOIN country AS co
-	ON ci.countrycode = co.code
+INNER JOIN countrylanguage AS cl
+	ON ci.CountryCode = cl.CountryCode
+WHERE ci.name = 'Santa Monica'
+ORDER By cl.Percentage DESC 
 ; 
+
+-- How many different countries are in each region?
+SELECT count(c.region), c.region
+FROM country AS c
+GROUP BY c.region
+;
+
