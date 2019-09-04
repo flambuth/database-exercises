@@ -17,10 +17,11 @@ SELECT
 	CONCAT(UPPER(first_name),' ',UPPER(last_name)) as full_name
 From `employees`;
 
-#Selects all fields for employees hired in the 90's. I don't know how to filter out a day of the year from a date field to include all years. Meaning I don't know how to select just XXXX-12-25.
+#Selects all fields for employees hired in the 90's and born on Christmas
 SELECT *
-FROM `employees`
-WHERE `hire_date` >= '1990-01-01' AND `hire_date` <= '2000-01-01';
+FROM employees
+WHERE hire_date >= '1990-01-01' AND hire_date <= '2000-01-01' AND birth_date LIKE '%12-25%'
+;
 
 
 #Selects the employees hired in the 90s and displays the time since they have been hired.
