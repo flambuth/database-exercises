@@ -14,5 +14,20 @@ WHERE first_name REGEXP '^E.+'
 ;
 
 -- Find all employees hired in the 90s — 135,214 rows.
+SELECT emp_no
+FROM employees
+WHERE hire_date >= '1990-01-01'
+AND hire_date <= '1999-12-31'
+;
+
 -- Find all employees born on Christmas — 842 rows.
+SELECT emp_no
+FROM employees
+WHERE birth_date LIKE '%12-25%'
+;
+
 -- Find all employees with a 'q' in their last name — 1,873 rows.
+SELECT emp_no
+FROM employees
+WHERE last_name LIKE '%e%' OR last_name LIKE '%E%' 
+;
