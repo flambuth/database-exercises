@@ -27,9 +27,15 @@ ORDER BY last_name, first_name
 
 -- List the last names of all the actors, as well as how many actors have that last name.
 -- This one is frustrating. 
-SELECT last_name, first_name, COUNT(*)
+SELECT last_name, first_name
 FROM actor
-GROUP BY last_name, first_name
+ORDER BY last_name
+;
+-- Gonna try that using self join
+SELECT a.last_name, b.first_name, COUNT(b.last_name)
+FROM actor a, actor b
+WHERE a.actor_id = b.actor_id
+GROUP BY a.last_name, b.first_name
 ;
 
 -- List last names of actors and the number of actors who have that last name, but only for names that are shared by at least two actors
