@@ -1,0 +1,1 @@
+-- Starting a new SQL script becasue Im not sure how have multiple temporary tables
