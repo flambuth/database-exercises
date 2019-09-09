@@ -45,4 +45,34 @@ LIMIT 5
 ;
 
 -- 4
---
+-- What are the most most profitable films (in terms of gross revenue)?
+-- I will likely have to subtract a revenue value with a cost value
+
+-- This groups the SUM of payment.amount for each film.title
+SELECT f.title, SUM(p.amount)
+FROM film as f
+	JOIN inventory AS inv
+	USING (film_id)
+	JOIN rental AS r
+	ON  r.inventory_id = inv.inventory_id
+	JOIN payment as p
+	ON p.rental_id = r.rental_id
+GROUP BY f.title
+ORDER BY SUM(p.amount) DESC
+;
+
+-- Try to get a profit that is the diffrence betwen the SUM(p.amount) and subtract inventory_id*f.replacement_cost
+
+-- This shows the replacement cost for each f.title
+-- RealCost is the cost to replace each title * the inventory-ids grouped to each title
+SELECT f.title, SUM(p.amount), f.replacement_cost * COUNT(inv.inventory_id) AS realCost
+FROM film as f
+	JOIN inventory AS inv
+	USING (film_id)
+	JOIN rental AS r
+	ON  r.inventory_id = inv.inventory_id
+	JOIN payment as p
+	ON p.rental_id = r.rental_id
+GROUP BY f.title, f.replacement_cost
+ORDER BY SUM(p.amount) DESC
+;
