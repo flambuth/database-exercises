@@ -69,11 +69,32 @@ FROM staff AS s
 
 -- Use JOIN to display the total amount rung up by each staff member in August of 2005.
 -- 10
-SELECT CONCAT(s.first_name,s.last_name) AS full_name, SUM(p.amount) AS totalPayments
-FROM staff AS s
-	JOIN payment AS p
-	ON s.staff_id=p.staff_id
--- WHERE p.payment_date >= CAST('2005-08-01 00:00:01') AND p.payment_date <= CAST('2005-08-31 23:59:59')
-GROUP By full_name
-HAVING p.payment_date >= CAST('2005-08-01 00:00:01') AND p.payment_date <= CAST('2005-08-31 23:59:59')
+SELECT CONCAT(s.first_name, s.last_name) AS full_name, SUM(amount) AS SalesInAUG2005
+FROM payment AS p
+	JOIN staff as s
+	ON p.staff_id = s.staff_id
+WHERE payment_date >= '2005-08-01 00:00:01' AND payment_date <= '2005-08-31 23:59:59'
+GROUP BY s.staff_id
+;
+
+-- 11
+-- List each film and the number of actors who are listed for that film.
+
+-- SELECT the title and the count of all the actor_id rows grouped into the film titles
+SELECT f.title, COUNT(fa.actor_id)
+FROM film AS f
+JOIN film_actor AS fa
+	ON f.film_id=fa.film_id 
+GROUP BY f.title
+;
+
+-- 12
+-- How many copies of the film Hunchback Impossible exist in the inventory system?
+
+SELECT f.title, COUNT(i.film_id) AS copiesInInventory
+FROM film AS f
+	JOIN inventory as i
+	ON f.film_id = i.film_id
+WHERE f.title = 'Hunchback Impossible'
+GROUP BY f.title
 ;

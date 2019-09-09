@@ -31,5 +31,18 @@ FROM staff AS s
 	ON s.staff_id=p.staff_id
 -- WHERE p.payment_date >= CAST('2005-08-01 00:00:01') AND p.payment_date <= CAST('2005-08-31 23:59:59')
 GROUP By full_name
-HAVING p.payment_date >= CAST('2005-08-01 00:00:01') AND p.payment_date <= CAST('2005-08-31 23:59:59')
+HAVING p.payment_date >= '2005-08-01 00:00:01' AND p.payment_date <= '2005-08-31 23:59:59'
+;
+
+-- This got each record 
+SELECT staff_id, amount
+FROM payment
+WHERE payment_date >= '2005-05-25 11:30:37' AND payment_date <= '2005-08-31 23:59:59'
+;
+
+-- This is the sum of all sales grouped to each employee where the payment date was between the first and last of AUG2006
+SELECT staff_id, SUM(amount)
+FROM payment
+WHERE payment_date >= '2005-08-01 00:00:01' AND payment_date <= '2005-08-31 23:59:59'
+GROUP BY staff_id
 ;
