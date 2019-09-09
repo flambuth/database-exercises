@@ -74,3 +74,34 @@ SELECT SUM(p.amount), p.staff_id
 FROM payment AS p
 GROUP BY p.staff_id
 ;
+
+-- Top five genres in gross revenue sorted desc. 
+-- use following tables: category, film_category, inventory, payment, and rental
+-- film_category looks to be the prime joining table
+
+-- This selects groups of genres and how many records are in each
+SELECT ca.name, COUNT(*)
+FROM film_category AS fcat
+	JOIN film AS f
+	ON fcat.film_id = f.film_id
+	JOIN inventory AS inv
+	ON inv.film_id = f.film_id
+	JOIN category AS ca
+	ON ca.category_id = fcat.category_id
+	JOIN rental as r
+	ON r.`inventory_id` = inv.inventory_id
+GROUP BY ca.name
+;
+
+-- Lets find revenue first
+-- I think summing up each filmTitles by group equates to the amount of revenue each title has acumulated
+SELECT  f.title, COUNT(p.rental_id), COUNT(r.inventory_id), COUNT(p.rental_id), SUM(p.amount) AS revenue
+FROM payment AS p
+	JOIN rental AS r
+	ON r.rental_id = p.rental_id
+	JOIN inventory AS inv
+	ON inv.inventory_id = r.inventory_id
+	JOIN film as f
+	ON f.film_id = inv.film_id
+GROUP BY f.title
+;

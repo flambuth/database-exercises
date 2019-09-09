@@ -172,4 +172,10 @@ HAVING ad.address_id = 1 OR ad.address_id = 2
 
 -- 19
 -- Top five genres in gross revenue sorted desc. use following tables: category, film_category, inventory, payment, and rental
-SELECT
+-- film_category looks to be the prime joining table
+SELECT f.title, fcat.category_id
+FROM film_category AS fcat
+	JOIN film AS f
+	ON fcat.film_id = f.film_id
+
+;
