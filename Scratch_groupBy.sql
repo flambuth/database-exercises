@@ -17,3 +17,8 @@ FROM film
 SELECT title, sum(rental_rate*rental_duration) AS max_rental_charge
 FROM film
 GROUP BY title;
+
+SELECT last_name, COUNT(last_name) as countOfLastNames
+from actor
+group by last_name
+;
