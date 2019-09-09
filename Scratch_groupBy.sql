@@ -57,9 +57,18 @@ WHERE f.title IN (
 ) AND f.language_id = 1
 ;
 
--- try later
-IN (
-	SELECT f.title 
-	FROM film as f
-	WHERE f.title LIKE 'K&' OR f.title LIKE 'Q&'
-)
+-- build a joined table inside a subquery capsule
+SELECT CONCAT(cust.first_name,' ',cust.last_name) AS full_name, co.country AS cusomerCountry
+FROM customer AS cust
+	JOIN address AS ad
+	ON cust.address_id = ad.`address_id`
+	JOIN city AS ci
+	ON ad.city_id = ci.city_id
+	JOIN country AS co
+	ON ci.country_id = co.country_id
+WHERE co.country = 'Canada'
+;
+
+-- Now SELECT the customer that are IN these tables joining address_id to country_id
+
+

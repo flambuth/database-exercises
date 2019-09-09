@@ -113,3 +113,29 @@ WHERE f.title IN (
 -- NOTE: Apple^tab brings up a ribbon of open applications
 -- 14
 -- Use subqueries to display all actors who appear in the film Alone Trip.
+SELECT CONCAT(a.first_name,' ', a.last_name) AS full_name
+FROM actor AS a
+WHERE actor_id IN (
+	SELECT actor_id
+	FROM film
+	WHERE title = 'Alone Trip' 
+)
+;
+
+-- 15
+-- email marketing campaign in Canada, SO you will need the names and email addresses of all Canadian customers.
+-- build a joined table inside a subquery capsule was the goal
+-- instead I joined enough tables to link the address_id filed to the country name
+SELECT CONCAT(cust.first_name,' ',cust.last_name) AS full_name, co.country AS cusomerCountry
+FROM customer AS cust
+	JOIN address AS ad
+	ON cust.address_id = ad.`address_id`
+	JOIN city AS ci
+	ON ad.city_id = ci.city_id
+	JOIN country AS co
+	ON ci.country_id = co.country_id
+WHERE co.country = 'Canada'
+;
+
+-- 16
+-- 
