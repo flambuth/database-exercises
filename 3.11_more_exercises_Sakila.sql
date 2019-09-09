@@ -138,4 +138,22 @@ WHERE co.country = 'Canada'
 ;
 
 -- 16
--- 
+-- Target all family movies for a promotion. Identify all movies categorized as famiy films.
+SELECT f.title, ca.name AS film_genre
+FROM film AS f
+JOIN film_category AS fcat 
+ON f.film_id = fcat.film_id
+JOIN category AS ca 
+ON fcat.category_id = ca.category_id
+WHERE ca.name = 'Family'
+;
+
+-- 17
+-- Write a query to display how much business, in dollars, each store brought in.
+-- There are only two stores and there are only two employees. Their staff_id is mapped symetrically to store_id
+-- SO I just used an alias staff_id
+SELECT SUM(p.amount), p.staff_id
+FROM payment AS p
+GROUP BY p.staff_id
+;
+

@@ -69,6 +69,8 @@ FROM customer AS cust
 WHERE co.country = 'Canada'
 ;
 
--- Now SELECT the customer that are IN these tables joining address_id to country_id
-
-
+-- Find out how much each store is brining in
+SELECT SUM(p.amount), p.staff_id
+FROM payment AS p
+GROUP BY p.staff_id
+;
