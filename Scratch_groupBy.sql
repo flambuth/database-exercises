@@ -22,3 +22,14 @@ SELECT last_name, COUNT(last_name) as countOfLastNames
 from actor
 group by last_name
 ;
+
+
+-- Trying to use between on where
+SELECT CONCAT(s.first_name,s.last_name) AS full_name, SUM(p.amount) AS totalPayments
+FROM staff AS s
+	JOIN payment AS p
+	ON s.staff_id=p.staff_id
+-- WHERE p.payment_date >= CAST('2005-08-01 00:00:01') AND p.payment_date <= CAST('2005-08-31 23:59:59')
+GROUP By full_name
+HAVING p.payment_date >= CAST('2005-08-01 00:00:01') AND p.payment_date <= CAST('2005-08-31 23:59:59')
+;
