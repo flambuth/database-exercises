@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>ContentFilters</key>
+	<dict/>
+	<key>auto_connect</key>
+	<true/>
+	<key>data</key>
+	<dict>
+		<key>connection</key>
+		<dict>
+			<key>database</key>
+			<string>bayes_809</string>
+			<key>host</key>
+			<string>157.230.209.171</string>
+			<key>kcid</key>
+			<string>-4901112283943864687</string>
+			<key>name</key>
+			<string>Data_Science_Databases</string>
+			<key>rdbms_type</key>
+			<string>mysql</string>
+			<key>sslCACertFileLocation</key>
+			<string></string>
+			<key>sslCACertFileLocationEnabled</key>
+			<integer>0</integer>
+			<key>sslCertificateFileLocation</key>
+			<string></string>
+			<key>sslCertificateFileLocationEnabled</key>
+			<integer>0</integer>
+			<key>sslKeyFileLocation</key>
+			<string></string>
+			<key>sslKeyFileLocationEnabled</key>
+			<integer>0</integer>
+			<key>type</key>
+			<string>SPTCPIPConnection</string>
+			<key>useSSL</key>
+			<integer>0</integer>
+			<key>user</key>
+			<string>bayes_809</string>
+		</dict>
+		<key>session</key>
+		<dict>
+			<key>connectionEncoding</key>
+			<string>latin1</string>
+			<key>contentPageNumber</key>
+			<integer>1</integer>
+			<key>contentSelection</key>
+			<data>
+			YnBsaXN0MDDUAQIDBAUGJSZYJHZlcnNpb25YJG9iamVjdHNZJGFy
+			Y2hpdmVyVCR0b3ASAAGGoKgHCBMUFRYaIVUkbnVsbNMJCgsMDxJX
+			TlMua2V5c1pOUy5vYmplY3RzViRjbGFzc6INDoACgAOiEBGABIAF
+			gAdUdHlwZVRyb3dzXxAdU2VsZWN0aW9uRGV0YWlsVHlwZU5TSW5k
+			ZXhTZXTSFwsYGVxOU1JhbmdlQ291bnQQAIAG0hscHR5aJGNsYXNz
+			bmFtZVgkY2xhc3Nlc1pOU0luZGV4U2V0oh8gWk5TSW5kZXhTZXRY
+			TlNPYmplY3TSGxwiI1xOU0RpY3Rpb25hcnmiIiRYTlNPYmplY3Rf
+			EA9OU0tleWVkQXJjaGl2ZXLRJyhUZGF0YYABAAgAEQAaACMALQAy
+			ADcAQABGAE0AVQBgAGcAagBsAG4AcQBzAHUAdwB8AIEAoQCmALMA
+			tQC3ALwAxwDQANsA3gDpAPIA9wEEAQcBEAEiASUBKgAAAAAAAAIB
+			AAAAAAAAACkAAAAAAAAAAAAAAAAAAAEs
+			</data>
+			<key>contentSortColIsAsc</key>
+			<true/>
+			<key>contentViewport</key>
+			<string>{{0, 0}, {694, 448}}</string>
+			<key>isToolbarVisible</key>
+			<true/>
+			<key>queries</key>
+			<string>-- re-create the employees_with_departments table
+CREATE TEMPORARY TABLE employees_with_departments AS
+SELECT emp_no, first_name, last_name, dept_no, dept_name
+FROM employees
+JOIN dept_emp USING(emp_no)
+JOIN departments USING(dept_no)
+LIMIT 100;
+
+SELECT first_name
+FROM employees;
+
+
+-- one at a time
+USE bayes_809;
+-- after USING the right db
+CREATE TEMPORARY TABLE my_numbers(
+    n INT UNSIGNED NOT NULL 
+);
+-- now insert some values
+INSERT INTO my_numbers(n) VALUES (1), (2), (3), (4), (5);
+
+-- now query this mini tempTable
+-- I executed that update down there, so when I run this query again, it verifies the update
+SELECT * 
+FROM my_numbers
+;
+
+UPDATE my_numbers SET n = n + 1;
+
+-- this will get rid of even values
+DELETE FROM my_numbers WHERE n % 2 = 0;
+
+SElECT * FROM my_numbers;
+
+USE bayes_809;
+
+CREATE TEMPORARY TABLE employees_with_departments AS
+SELECT emp_no, first_name, last_name, dept_no, dept_name
+FROM employees
+JOIN dept_emp USING(emp_no)
+JOIN departments USING(dept_no)
+LIMIT 100;</string>
+			<key>view</key>
+			<string>SP_VIEW_CUSTOMQUERY</string>
+			<key>windowVerticalDividerPosition</key>
+			<real>220</real>
+		</dict>
+	</dict>
+	<key>encrypted</key>
+	<false/>
+	<key>format</key>
+	<string>connection</string>
+	<key>queryFavorites</key>
+	<array/>
+	<key>queryHistory</key>
+	<array>
+		<string>CREATE TEMPORARY TABLE employees_with_departments AS
+SELECT emp_no, first_name, last_name, dept_no, dept_name
+FROM employees
+JOIN dept_emp USING(emp_no)
+JOIN departments USING(dept_no)
+LIMIT 100</string>
+		<string>USE bayes_809</string>
+		<string>SElECT * FROM my_numbers</string>
+		<string>-- this will get rid of even values
+DELETE FROM my_numbers WHERE n % 2 = 0</string>
+		<string>-- now query this mini tempTable
+SELECT * 
+FROM my_numbers</string>
+		<string>UPDATE my_numbers SET n = n + 1</string>
+		<string>-- now insert some values
+INSERT INTO my_numbers(n) VALUES (1), (2), (3), (4), (5)</string>
+		<string>-- after USING the right db
+CREATE TEMPORARY TABLE my_numbers(
+    n INT UNSIGNED NOT NULL 
+)</string>
+		<string>-- one at a time
+USE bayes_809</string>
+		<string>-- one at a time
+USE bayes_123
+-- after USING the right db
+CREATE TEMPORARY TABLE my_numbers(
+    n INT UNSIGNED NOT NULL 
+)</string>
+		<string>-- one at a time
+
+CREATE TEMPORARY TABLE my_numbers(
+    n INT UNSIGNED NOT NULL 
+)</string>
+		<string>-- Lets find revenue first
+SELECT  f.title, COUNT(p.rental_id), COUNT(r.inventory_id), COUNT(p.rental_id), SUM(p.amount) AS revenue
+FROM payment AS p
+	JOIN rental AS r
+	ON r.rental_id = p.rental_id
+	JOIN inventory AS inv
+	ON inv.inventory_id = r.inventory_id
+	JOIN film as f
+	ON f.film_id = inv.film_id
+GROUP BY f.title</string>
+		<string>-- Lets find revenue first
+SELECT  f.title, COUNT(p.rental_id), COUNT(r.inventory_id), COUNT(p.rental_id), SUM(p.amount)
+FROM payment AS p
+	JOIN rental AS r
+	ON r.rental_id = p.rental_id
+	JOIN inventory AS inv
+	ON inv.inventory_id = r.inventory_id
+	JOIN film as f
+	ON f.film_id = inv.film_id
+GROUP BY f.title</string>
+		<string>-- Lets find revenue first
+SELECT  f.title, COUNT(p.rental_id), COUNT(r.inventory_id), COUNT(p.rental_id)
+FROM payment AS p
+	JOIN rental AS r
+	ON r.rental_id = p.rental_id
+	JOIN inventory AS inv
+	ON inv.inventory_id = r.inventory_id
+	JOIN film as f
+	ON f.film_id = inv.film_id
+GROUP BY f.title</string>
+		<string>-- Lets find revenue first
+SELECT  f.title, COUNT(p.rental_id), COUNT(r.inventory_id)
+FROM payment AS p
+	JOIN rental AS r
+	ON r.rental_id = p.rental_id
+	JOIN inventory AS inv
+	ON inv.inventory_id = r.inventory_id
+	JOIN film as f
+	ON f.film_id = inv.film_id
+GROUP BY f.title</string>
+		<string>-- Lets find revenue first
+SELECT  f.film_id, COUNT(p.rental_id), COUNT(r.inventory_id)
+FROM payment AS p
+	JOIN rental AS r
+	ON r.rental_id = p.rental_id
+	JOIN inventory AS inv
+	ON inv.inventory_id = r.inventory_id
+	JOIN film as f
+	ON f.film_id = inv.film_id
+GROUP BY f.film_id</string>
+		<string>-- Lets find revenue first
+SELECT  r.inventory_id, COUNT(p.rental_id), COUNT(r.inventory_id)
+FROM payment AS p
+	JOIN rental AS r
+	ON r.rental_id = p.rental_id
+	JOIN inventory AS inv
+	ON inv.inventory_id = r.inventory_id
+	JOIN film as f
+	ON f.film_id = inv.film_id
+GROUP BY r.inventory_id</string>
+		<string>-- Lets find revenue first
+SELECT  r.inventory_id, COUNT(p.rental_id), COUNT(r.inventory_id)
+FROM payment AS p
+	JOIN rental AS r
+	ON r.rental_id = p.rental_id
+	JOIN inventory AS inv
+	ON inv.inventory_id = r.inventory_id
+GROUP BY r.inventory_id</string>
+		<string>-- Lets find revenue first
+SELECT  r.inventory_id, COUNT(p.rental_id)
+FROM payment AS p
+	JOIN rental AS r
+	ON r.rental_id = p.rental_id
+	JOIN inventory AS inv
+	ON inv.inventory_id = r.inventory_id
+GROUP BY r.inventory_id</string>
+		<string>-- Lets find revenue first
+SELECT  r.inventory_id, COUNT(p.rental_id)
+FROM payment AS p
+	JOIN rental AS r
+	ON r.rental_id = p.rental_id
+GROUP BY r.inventory_id</string>
+	</array>
+	<key>rdbms_type</key>
+	<string>mysql</string>
+	<key>rdbms_version</key>
+	<string>5.7.27-0ubuntu0.18.04.1-log</string>
+	<key>version</key>
+	<integer>1</integer>
+</dict>
+</plist>

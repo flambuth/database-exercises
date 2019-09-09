@@ -173,9 +173,11 @@ HAVING ad.address_id = 1 OR ad.address_id = 2
 -- 19
 -- Top five genres in gross revenue sorted desc. use following tables: category, film_category, inventory, payment, and rental
 -- film_category looks to be the prime joining table
-SELECT f.title, fcat.category_id
+SELECT fcat.category_id, COUNT(*)
 FROM film_category AS fcat
 	JOIN film AS f
 	ON fcat.film_id = f.film_id
-
+	JOIN inventory AS inv
+	ON inv.film_id = f.film_id
+GROUP BY fcat.category_id
 ;
