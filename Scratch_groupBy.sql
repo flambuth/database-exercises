@@ -46,3 +46,20 @@ FROM payment
 WHERE payment_date >= '2005-08-01 00:00:01' AND payment_date <= '2005-08-31 23:59:59'
 GROUP BY staff_id
 ;
+
+--  Use subqueries to display the titles of movies starting with the letters K and Q whose language is English.
+SELECT f.title, f.`language_id` AS titleLanguage 
+FROM film as f
+WHERE f.title IN (
+	SELECT f.title
+	FROM film as f
+	WHERE f.title LIKE 'K%' OR f.title LIKE 'Q%' 	
+) AND f.language_id = 1
+;
+
+-- try later
+IN (
+	SELECT f.title 
+	FROM film as f
+	WHERE f.title LIKE 'K&' OR f.title LIKE 'Q&'
+)

@@ -98,3 +98,18 @@ FROM film AS f
 WHERE f.title = 'Hunchback Impossible'
 GROUP BY f.title
 ;
+
+-- 13
+--  Use subqueries to display the titles of movies starting with the letters K and Q whose language is English.
+SELECT f.title, f.`language_id` AS titleLanguage 
+FROM film as f
+WHERE f.title IN (
+	SELECT f.title
+	FROM film as f
+	WHERE f.title LIKE 'K%' OR f.title LIKE 'Q%' 	
+) AND f.language_id = 1
+;
+
+-- NOTE: Apple^tab brings up a ribbon of open applications
+-- 14
+-- Use subqueries to display all actors who appear in the film Alone Trip.
