@@ -157,3 +157,19 @@ FROM payment AS p
 GROUP BY p.staff_id
 ;
 
+-- 18
+-- Write a query to display for each store its store ID, city, and country.
+-- Once again, store_id is mapped perfectly to the address_id, so I just aliased it 
+SELECT ad.address_id AS store_ID, ci.city, co.country
+FROM address AS ad
+	JOIN city AS ci
+	ON ci.city_id = ad.city_id
+	JOIN country AS co
+	ON co.country_id = ci.country_id
+GROUP BY ad.address_id
+HAVING ad.address_id = 1 OR ad.address_id = 2
+;
+
+-- 19
+-- Top five genres in gross revenue sorted desc. use following tables: category, film_category, inventory, payment, and rental
+SELECT
